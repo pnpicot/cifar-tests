@@ -1,0 +1,59 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Results and output folders
+results/
+outputs/
+checkpoints/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# Model files (optional - remove if you want to commit small models)
+*.h5
+*.hdf5
+*.keras
+*.pkl
+*.pt
+*.pth
+
+# Dataset cache
+*.npy
+*.npz
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment variables
+.env
+.env.local
+
+# Other
+.vscode/
