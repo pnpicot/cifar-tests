@@ -3,7 +3,7 @@ CNN model architecture for CIFAR-10 classification
 """
 
 from tensorflow import keras
-from tensorflow.keras import layers # pyright: ignore[reportMissingImports]
+from tensorflow.keras import layers, regularizers # pyright: ignore[reportMissingImports]
 from tensorflow.keras.models import Sequential # pyright: ignore[reportMissingImports]
 from abc import ABC, abstractmethod
 
@@ -153,6 +153,7 @@ class RegularizedCNNModel(BaseModel):
                 (3, 3),
                 activation='relu',
                 padding='same',
+                kernel_regularizer=regularizers.l2(0.001),
                 input_shape=self.input_shape,
                 name='conv_1_1'
             ),
@@ -162,6 +163,7 @@ class RegularizedCNNModel(BaseModel):
                 (3, 3),
                 activation='relu',
                 padding='same',
+                kernel_regularizer=regularizers.l2(0.001),
                 name='conv_1_2'
             ),
             layers.BatchNormalization(name='bn_1_2'),
@@ -174,6 +176,7 @@ class RegularizedCNNModel(BaseModel):
                 (3, 3),
                 activation='relu',
                 padding='same',
+                kernel_regularizer=regularizers.l2(0.001),
                 name='conv_2_1'
             ),
             layers.BatchNormalization(name='bn_2_1'),
@@ -182,6 +185,7 @@ class RegularizedCNNModel(BaseModel):
                 (3, 3),
                 activation='relu',
                 padding='same',
+                kernel_regularizer=regularizers.l2(0.001),
                 name='conv_2_2'
             ),
             layers.BatchNormalization(name='bn_2_2'),
@@ -194,6 +198,7 @@ class RegularizedCNNModel(BaseModel):
                 (3, 3),
                 activation='relu',
                 padding='same',
+                kernel_regularizer=regularizers.l2(0.001),
                 name='conv_3_1'
             ),
             layers.BatchNormalization(name='bn_3_1'),
@@ -202,6 +207,7 @@ class RegularizedCNNModel(BaseModel):
                 (3, 3),
                 activation='relu',
                 padding='same',
+                kernel_regularizer=regularizers.l2(0.001),
                 name='conv_3_2'
             ),
             layers.BatchNormalization(name='bn_3_2'),
@@ -210,7 +216,7 @@ class RegularizedCNNModel(BaseModel):
 
             # Dense layers
             layers.Flatten(name='flatten'),
-            layers.Dense(512, activation='relu', name='dense_1'),
+            layers.Dense(512, activation='relu', kernel_regularizer=regularizers.l2(0.001), name='dense_1'),
             layers.Dropout(0.5, name='dropout_4'),
             layers.Dense(self.num_classes, activation='softmax', name='output')
         ], name='RegularizedCNN')
